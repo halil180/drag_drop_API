@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="div1" class="draggable" draggable="true" ondragstart="dragstart(event)">hi </div>
+        <div  id="div2" class="draggable" draggable="true"  ondragstart="dragstart(event)">ders </div>
+        <div  id="div3" class="draggable" draggable="true"  ondragstart="dragstart(event)">co </div>
+    </div>
+    <div class="drop-container">
+        <div  id="div5" class="drop-area"  ondrop="drop(event)" ondragover="dragover(event)"></div>
+        <div  id="div6" class="drop-area" ondrop="drop(event)" ondragover="dragover(event)"></div>
+        <div  id="div7" class="drop-area" ondrop="drop(event)" ondragover="dragover(event)"></div>
+    </div>
+<script>
+function dragstart(event) {
+ // Set the drag's format and data. Use the event target's id for the data
+    event.dataTransfer.setData("text", event.target.id);
+    console.log(event.target.id)
+}
+function drop(event) {
+    event.preventDefault();
+    let data = event.dataTransfer.getData("text");
+    event.target.appendChild(document.getElementById(data));
+}
+function dragover(event) {
+    event.preventDefault();
+}
+</script>
+</body>
+</html>
